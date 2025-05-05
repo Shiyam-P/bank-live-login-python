@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typing Speed Tracker</title>
+    <script>
+        let startTime;
+        function startTimer() {
+            if (!startTime) {
+                startTime = new Date().getTime() / 1000; // Start time in seconds
+            }
+        }
+    </script>
+</head>
+<body>
+    <h2>Typing Speed Tracker</h2>
+    <form action="/sub" method="POST">
+        <textarea name="typed_text" onkeypress="startTimer()" rows="5" cols="50"></textarea>
+        <input type="hidden" name="start_time" id="start_time">
+        <br>
+        <button type="submit">Check Speed</button>
+    </form>
+    <script>
+        document.querySelector("form").addEventListener("submit", function() {
+            document.getElementById("start_time").value = startTime;
+        });
+    </script>
+</body>
+</html>
